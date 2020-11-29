@@ -1,0 +1,5 @@
+//´òÓ¡Â¥ÌÝ
+#include<stdio.h>
+main()
+{
+}
