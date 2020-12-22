@@ -1,4 +1,4 @@
-//失败之作
+//枚举型非闰年日期
 enum DAY_OF_YEAR
 {
 	JIN1 = 1, JIN2, JIN3, JIN4, JIN5, JIN6, JIN7, JIN8, JIN9, JIN10, JIN11, JIN12, JIN13, JIN14, JIN15, \
@@ -26,3 +26,47 @@ enum DAY_OF_YEAR
 	DEC1 = 335, DEC2, DEC3, DEC4, DEC5, DEC6, DEC7, DEC8, DEC9, DEC10, DEC11, DEC12, DEC13, DEC14, DEC15, \
 	DEC16, DEC17, DEC18, DEC19, DEC20, DEC21, DEC22, DEC23, DEC24, DEC25, DEC26, DEC27, DEC28, DEC29, DEC30, DEC31
 }date;
+//数列降序排序(选择法) n为数组元素个数 
+void float_array_queue(float array[], int n)
+{
+	int i, k, j;
+	float b;
+	for (i = 0; i < n; i++)
+	{
+		k = i;
+		for (j = i + 1; j < n; j++)
+		{
+			if (array[j] > array[k])
+			{
+				k = j;
+			}
+		}
+		if (k != i)
+		{
+			b = array[i];
+			array[i] = array[k];
+			array[k] = b;
+		}
+	}
+}
+//数组查找(二分法) 需要数组先进行排列 n为数组元素个数 m为要查找的数
+int search(float array[], int n, float m)
+{
+	int a;
+	int min, max;
+	min = 0;
+	max = n - 1;
+	for (; array[(min + max) / 2] != m;)
+	{
+		if (array[(min + max) / 2] > m)
+		{
+			max = (min + max) / 2;
+		}
+		else if (array[(min + max) / 2] < m)
+		{
+			min = (min + max) / 2;
+		}
+	}
+	a = (min + max) / 2;
+	return a + 1;
+}
