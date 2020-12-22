@@ -1,4 +1,4 @@
-//ÀÛ¼ÓÇó¦°
+//ç´¯åŠ æ±‚Î 
 #include<stdio.h>
 #include<math.h>
 main()
@@ -14,5 +14,5 @@ main()
 		sum += pow(-1, (count + 1))*j;
 	}
 	Pi = 4 * sum;
-	printf("¦°¡Ö%lf,ÀÛ¼ÓÁË%d´Î", Pi,count);
+	printf("Â¦Â°Â¡Ã–%lf,Ã€Ã›Â¼Ã“ÃÃ‹%dÂ´Ã", Pi,count);
 }
