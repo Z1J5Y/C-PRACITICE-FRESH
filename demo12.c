@@ -1,9 +1,9 @@
-//求因数和
+//姹傚洜鏁板拰
 #include<stdio.h>
 main()
 {
 	int n, s, p, o = 0;
-	printf("输入整数n:");
+	printf("杈撳叆鏁存暟n:");
 	scanf_s("%d", &n);
 	for (s = 2; s < n; s++)
 	{
