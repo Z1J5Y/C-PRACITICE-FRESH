@@ -1,4 +1,4 @@
-//�ݸ屾
+//草稿本
 #include<stdio.h>
 #include<string.h>
 #define N 20
