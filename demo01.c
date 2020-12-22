@@ -8,11 +8,11 @@ main()
 	if (B >= 5)
 	{
 		c = ((float)(((int)(a * 100) + 1)) / 100);
-		printf("Êä³ö:%f", c);
+		printf("output:%f", c);
 	}
 	else
 	{
 		d = (float)((int)(a * 100)) / 100;
-		printf("Êä³ö:%f", d);
+		printf("output:%f", d);
 	}
 }
