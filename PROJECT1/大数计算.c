@@ -1,4 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS//²»ÖªµÀÎªÊ²Ã´ Èç¹ûÓÃVC6.0¾Í²»ĞèÒªÕâĞĞ´úÂë Èç¹û²»Ğ´ÕâÒ»ĞĞ ÔÚVS2019»á±¨´íC4996:too few arguments in function call
 #include<stdio.h>
 #include<string.h>
 #define N 20
@@ -8,16 +7,15 @@ main()
 	int an, bn, extra = 0, max, way, i, j;
 	printf("Please input one strings:");
 	gets(a);
-	printf("ÕâÊÇÒ»¸ö%dÎ»Êı\n", (int)strlen(a));
 	printf("Please input another strings:");
 	gets(b);
-	printf("ÕâÊÇÒ»¸ö%dÎ»Êı\n", (int)strlen(b));
 	an = (int)strlen(a) - 1;
 	bn = (int)strlen(b) - 1;
 	max = an > bn ? an : bn;
-	printf("Input the way of operation(1£ºpuls,2:minus):");
+	printf("Input the way of operation(1:puls,2:minus):");
 	scanf_s("%d", &way);
-	if (way == 1)//¼Ó·¨
+	//åŠ æ³•
+	if (way == 1)
 	{
 		while (max >= 0)
 		{
@@ -74,7 +72,8 @@ main()
 		else
 			printf("the result : %s\n", result);
 	}
-	else//¼õ·¨
+	//å‡æ³•(æœ‰é”™,éœ€è¦æ”¹è¿›)
+	else
 	{
 		for (i = 0; i < (int)strlen(a) && i < (int)strlen(b); i++)
 		{
@@ -99,7 +98,6 @@ main()
 				}
 			}
 		}
-		//ÅĞ¶ÏÕı¸º
 		while (max >= 0)
 		{
 			if (an >= 0 && bn >= 0)

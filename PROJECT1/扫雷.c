@@ -1,20 +1,20 @@
 #include<stdio.h>
 #include<time.h>
 #include <stdlib.h>
-#define length 5//¸Ä±ä´ËÖµÒÔ¸Ä±äÀ×ÇøÁÐÊý
-#define width 5//¸Ä±ä´ËÖµÒÔ¸Ä±äÀ×ÇøÐÐÊý
-#define num 5//¸Ä±ä´ËÖµÒÔ¸Ä±äÀ×ÇøÀ×Êý ÇÒÕ¨µ¯ÊýÁ¿Ð¡ÓÚÀ×Çø¸ñ×Ó×ÜÊý
-void print_boom_map_A(char array_player[width][length]);//Êä³öÀ×ÇøÄ£ÐÍ
-char print_boom_map_A_new(char array_player[width][length], char array_boom[width][length], int w, int l);//¸üÐÂµØÍ¼ ÏÔÊ¾Ñ¡ÖÐ×ø±êÖÜÎ§Õ¨µ¯Êý
+#define length 5//é›·åŒºé•¿åº¦
+#define width 5//é›·åŒºå®½åº¦
+#define num 5//é›·æ•°é‡
+void print_boom_map_A(char array_player[width][length]);//è¾“å‡ºé›·åŒº
+char print_boom_map_A_new(char array_player[width][length], char array_boom[width][length], int w, int l);//æ›´æ–°é›·åŒº
 main()
 {
 	if (num > length * width)
 	{
-		printf("Õ¨µ¯Ì«¶àÀµ");
+		printf("error,é›·æ•°è¿‡å¤š");
 	}
 	int i,j;
-	char array_boom[width][length];//Êµ¼ÊµÄ¸ñ×Ó
-	char array_player[width][length];//Õ¹ÏÖµÄ¸ñ×Ó
+	char array_boom[width][length];//å®žé™…ä¸Šçš„é›·åŒº
+	char array_player[width][length];//çŽ©å®¶çœ‹åˆ°çš„é›·åŒº
 	for (i = 0; i < length; i++)
 	{
 		for (j = 0; j < width; j++)
@@ -34,38 +34,36 @@ main()
 	int guess_width, guess_length;
 	char temp='0';
 	int safe=0;
-	//Ëæ»ú²úÉúÕ¨µ¯
 	do
 	{
 		srand((unsigned)time(NULL));
 		random_length = rand() % length;
-		random_width = rand() % width;
+		random_width = rand() % width;//éšæœºç”Ÿæˆé›·
 		if (array_boom[random_width][random_length] == '9')
 		{
 			continue;
 		}
 		array_boom[random_width][random_length] = '9';
 		i--;
-	} while (i > 0);//'9'´ú±íÕ¨µ¯ '0'´ú±íÕý³£µØ´ø
-	//Ëæ»ú²úÉúÕ¨µ¯
+	} while (i > 0);
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¨ï¿½ï¿½
 	print_boom_map_A(array_boom);
 	print_boom_map_A(array_player);
 	do
 	{
-		printf("ÊäÈëÏëÒª²ÈµÄÐÐÓëÁÐ(¸ñÊ½:ÐÐ,ÁÐ):");
-		scanf_s("%d,%d",&guess_width,&guess_length);
-		//´íÎóÇé¿ö
+		printf("è¾“å…¥é›·åŒºåæ ‡(x,y):");
+		scanf("%d,%d",&guess_width,&guess_length);
+		//è¾“å…¥åæ ‡
 		if (guess_width > width || guess_length > length || guess_length < 0 || guess_width < 0)
 		{
-			printf("Ð¡»ï×ÓÄã²»¶Ô¾¢Âï,ÊäÈë³ö´í!\n");
+			printf("è¾“å…¥é”™è¯¯\n");
 			continue;
 		}
 		if (array_player[guess_width-1][guess_length-1] != 'X')
 		{
-			printf("Ð¡»ï×ÓÄã²»¶Ô¾¢Âï,Õâ¸ö×ø±êÒÑ¾­ÊäÈë¹ýÒ»´ÎÁË!\n");
+			printf("è¾“å…¥é”™è¯¯\n");
 			continue;
 		}
-		//´íÎóÇé¿ö
 		temp=print_boom_map_A_new(array_player, array_boom, guess_width, guess_length);
 		array_player[guess_width-1][guess_length-1] = temp;
 		print_boom_map_A(array_player);
@@ -73,11 +71,11 @@ main()
 	} while (temp != '9'&& safe < length * width - num);
 	if (array_boom[guess_width-1][guess_length-1] == '9')
 	{
-		printf("Õ¨µ¯±¬Õ¨,ÄãËÀÁË.");
+		printf("é›·ç‚¸.");
 	}
 	if(safe==length*width-num)
 	{
-		printf("NB,À×È«±»ÄãÉ¨µôÁË");
+		printf("NB,ä½ è¿‡äº†");
 	}
 }
 
@@ -99,7 +97,7 @@ char print_boom_map_A_new(char array_player[width][length],char array_boom[width
 	{
 		return '9';
 	}
-	//²Èµ½Õ¨µ¯ÁË
+	//ï¿½Èµï¿½Õ¨ï¿½ï¿½ï¿½ï¿½
 	for (int i = w-2; i <= w; i++)
 	{
 		for (int j = l-2; j <= l; j++)
