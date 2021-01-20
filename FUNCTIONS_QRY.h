@@ -1,4 +1,4 @@
-//Ã¶¾ÙĞÍ·ÇÈòÄêÈÕÆÚ
+//Ã¶ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 enum DAY_OF_YEAR
 {
 	JIN1 = 1, JIN2, JIN3, JIN4, JIN5, JIN6, JIN7, JIN8, JIN9, JIN10, JIN11, JIN12, JIN13, JIN14, JIN15, \
@@ -26,7 +26,7 @@ enum DAY_OF_YEAR
 	DEC1 = 335, DEC2, DEC3, DEC4, DEC5, DEC6, DEC7, DEC8, DEC9, DEC10, DEC11, DEC12, DEC13, DEC14, DEC15, \
 	DEC16, DEC17, DEC18, DEC19, DEC20, DEC21, DEC22, DEC23, DEC24, DEC25, DEC26, DEC27, DEC28, DEC29, DEC30, DEC31
 }date;
-//ÊıÁĞ½µĞòÅÅĞò(Ñ¡Ôñ·¨) nÎªÊı×éÔªËØ¸öÊı 
+//å†’æ³¡æ’åº
 void float_array_queue(float array[], int n)
 {
 	int i, k, j;
@@ -49,7 +49,7 @@ void float_array_queue(float array[], int n)
 		}
 	}
 }
-//Êı×é²éÕÒ(¶ş·Ö·¨) ĞèÒªÊı×éÏÈ½øĞĞÅÅÁĞ nÎªÊı×éÔªËØ¸öÊı mÎªÒª²éÕÒµÄÊı
+//æ•°ç»„å…ƒç´ çš„ä¸‹è¡¨(äºŒåˆ†æ³•æŸ¥æ‰¾)
 int search(float array[], int n, float m)
 {
 	int a;
@@ -68,5 +68,5 @@ int search(float array[], int n, float m)
 		}
 	}
 	a = (min + max) / 2;
-	return a + 1;
+	return a;
 }
