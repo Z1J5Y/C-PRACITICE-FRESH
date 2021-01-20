@@ -22,7 +22,7 @@ double funcos(double e,double x)
 {
     int a;
     double sum=0;
-    for(int i=0;pow(x,2*i)/(2*i)>=e;i++)
+    for(int i=0;(pow(x,2*(i-1))/a)>=e;i++)
     {
         if(i<1)
         {
@@ -31,11 +31,11 @@ double funcos(double e,double x)
         else
         {
             a=1;
-            for(int j=1;j<=2*i;j++)
+            for(int j=2;j<=2*i;j++)
             {
                 a*=j;
             }
-            sum+=pow(-1,i)*pow(x,2*i)/2*i;
+            sum+=pow(-1,i)*pow(x,2*i)/a;
         }
     }
     return sum;
