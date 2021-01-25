@@ -1,18 +1,17 @@
 #include<stdio.h>
-main()
+#include<string.h>
+struct Book 
 {
-	float a, c, d;
-	int B;
-	scanf_s("%f", &a);
-	B = ((int)(a * 100)) % 10;
-	if (B >= 5)
-	{
-		c = ((float)(((int)(a * 100) + 1)) / 100);
-		printf("output:%f", c);
-	}
-	else
-	{
-		d = (float)((int)(a * 100)) / 100;
-		printf("output:%f", d);
-	}
+	char title[100];
+	int num;
+	char authur[20];
+};
+int main(void)
+{
+	struct Book book1,book2,*pbook1,*pbook2;
+	strcpy(book1.title,"woshiren");
+	book1.num=1;
+	strcpy(book1.authur,"Z1J5Y");
+	printf("%s,%d,%s",book1.title,book1.num,book1.authur);
+	return 0;
 }
