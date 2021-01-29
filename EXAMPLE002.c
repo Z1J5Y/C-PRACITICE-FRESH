@@ -1,17 +1,11 @@
-//求因数和
 #include<stdio.h>
-main()
+void main()
 {
-	int n, s, p, o = 0;
-	printf("输入整数n:");
-	scanf_s("%d", &n);
-	for (s = 2; s < n; s++)
-	{
-		p = n % s;
-		if (!p)
-		{
-			o += s;
-		}
-	}
-	printf("%d", o);
+	int a[2][2],(*pa)[2];
+	pa=a;
+	**pa=1;
+	*(*pa+1)=2;
+	**(pa+1)=3;
+	*(*(pa+1)+1)=4;
+	printf("%d %d %d %d",a[0][0],a[0][1],a[1][0],a[1][1]);
 }

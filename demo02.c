@@ -1,8 +1,7 @@
 #include<stdio.h>
-main()
+int main()
 {
-	double a = 2.234;
-	int b;
-	b = (int)a;
-	printf("%d,%lf", b, a);
+    int n=20,m=60,l=61;
+    printf("%d %d %d",n%60,m%60,l%60);
+    return 0;
 }

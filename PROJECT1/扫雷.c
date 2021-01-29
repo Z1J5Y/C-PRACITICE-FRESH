@@ -30,10 +30,11 @@ main()
 		}
 	}
 
-	int random_length, random_width,i=num;
+	int random_length, random_width;
 	int guess_width, guess_length;
 	char temp='0';
 	int safe=0;
+	i=num;
 	do
 	{
 		srand((unsigned)time(NULL));
@@ -46,7 +47,6 @@ main()
 		array_boom[random_width][random_length] = '9';
 		i--;
 	} while (i > 0);
-	//�������ը��
 	print_boom_map_A(array_boom);
 	print_boom_map_A(array_player);
 	do
@@ -97,7 +97,6 @@ char print_boom_map_A_new(char array_player[width][length],char array_boom[width
 	{
 		return '9';
 	}
-	//�ȵ�ը����
 	for (int i = w-2; i <= w; i++)
 	{
 		for (int j = l-2; j <= l; j++)

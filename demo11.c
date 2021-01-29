@@ -1,11 +1,9 @@
-//倒序输出数组(用函数)
 #include<stdio.h>
 void reserve_num(float array[], int n);
 main()
 {
 	int i=-1;
 	float a[10];
-	printf("输入数字:");
 	do
 	{
 		i++;
@@ -15,7 +13,7 @@ main()
 }
 void reserve_num(float array[], int n)
 {
-	printf("\n倒序为:");
+	printf("\n");
 	for (n-=1; n >= 0; n--)
 	{
 		printf("%f ", array[n]);

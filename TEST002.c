@@ -2,10 +2,10 @@
 #include<stdio.h>
 void main()
 {
-    char a=0,b=0;
-    int *p=(int *)&b;
-    
-    *p=259;
-
-    printf("%d %d",a,b);
+    int n=2;
+    int a[n][n],(*pa)[2];
+    pa=&a;
+    **pa=1;
+    *(*(pa)+1)=2;
+    printf("%d",*(*(pa)+1));
 }
