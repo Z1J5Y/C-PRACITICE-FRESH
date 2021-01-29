@@ -6,7 +6,7 @@
 #define num 5//雷数量
 void print_boom_map_A(char array_player[width][length]);//输出雷区
 char print_boom_map_A_new(char array_player[width][length], char array_boom[width][length], int w, int l);//更新雷区
-main()
+int main()
 {
 	if (num > length * width)
 	{
@@ -35,9 +35,9 @@ main()
 	char temp='0';
 	int safe=0;
 	i=num;
+	srand((unsigned)time(NULL));
 	do
 	{
-		srand((unsigned)time(NULL));
 		random_length = rand() % length;
 		random_width = rand() % width;//随机生成雷
 		if (array_boom[random_width][random_length] == '9')
@@ -77,6 +77,7 @@ main()
 	{
 		printf("NB,你过了");
 	}
+	return 0;
 }
 
 void print_boom_map_A(char array_player[width][length])

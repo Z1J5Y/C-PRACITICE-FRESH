@@ -1,10 +1,14 @@
 #include<stdio.h>
-main()
+#include<stdlib.h>
+
+void main()
 {
-	double x;
-	printf("输入x的值:");
-	scanf_s("%lf", &x);
-	if (x < 0) printf("答案为:%lf", x * x + x + 6);
-	else if (x < 10) printf("答案为:%lf", x * x - 5 * x + 6);
-	else printf("答案为:%lf", x * x - x - 1);
+	int *a=calloc(4,sizeof(int));
+	*a=1;
+	*(a+1)=2;
+	*(a+2)=2;
+	for(int i=0;i<4;i++)
+	{
+		printf("%d\n",*(a+i));
+	}
 }

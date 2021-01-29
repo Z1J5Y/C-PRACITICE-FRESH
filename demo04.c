@@ -1,13 +1,15 @@
 #include<stdio.h>
-#include<math.h>
-main()
+#include<stdlib.h>
+#include<string.h>
+int main()
 {
-	double rate = 0.0225;
-	double deposit , n , capital , p;
-	printf("输入存款期(年)和本金(元)格式(年,元):");
-	scanf_s("%lf,%lf", &n,&capital);
-	getchar();
-	p = pow((rate + 1), n);
-	deposit = (capital * p);
-	printf("本利和为：%lf", deposit);
+	srand((unsigned)time(NULL));
+	int m,n,N=2;
+	char temp;
+    m=rand()%(N*N*4);
+    printf("%d\n",m);
+    n=rand()%(N*N*4);
+    temp=rand()%26+65;
+    printf("%d,%d,%c",m,n,temp);
+	return 0;
 }

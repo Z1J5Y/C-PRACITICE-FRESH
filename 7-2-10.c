@@ -102,24 +102,27 @@ void print_map(char *array,int N);
 int main()
 {
     int N,count=0,i;
-    scanf("%d",&N);
     char *a=NULL,temp;
     int m,n;
-    i=N;
-            if(*a=(int*)malloc(4*N*N*sizeof(char))==NULL)
-            {
-                printf("error!");
-                return 0;
-            }
-        a=memset(a,0,4*N*N*sizeof(char));
-
-    do
+    scanf("%d",&N);
+    if(a=(char*)malloc(4*N*N*sizeof(char))==NULL)
     {
-        srand((unsigned)time(NULL));
-        m=(int)rand()%(4*N*N);
-        n=(int)rand()%(4*N*N);
-        temp=(char)rand()%26+65;
-        if(*(a+m)==0&&*(a+n)==0)
+        printf("error!");
+        return 0;
+    }
+    a=(char*)memset(&a,' ',4*N*N*sizeof(char));
+    i=N*N*2;
+    srand((unsigned)time(NULL));
+    printf("%c",*(a+2));
+    /*do
+    {
+        printf("%d\n",i);
+        m=rand()%(N*N*4);
+        printf("%d\n",m);
+        n=rand()%(N*N*4);
+        temp=rand()%26+65;
+        printf("%d,%d,%c",m,n,temp);
+        if(*(a+m)==0&&*(a+n)==0&&m!=n)
         {
             *(a+m)=temp;
             *(a+n)=temp;
@@ -128,18 +131,39 @@ int main()
         {
             continue;
         }
-        i--;
-    } while (i>0);
-    
+        i-=1;
+        printf("%d %d\n",m,n);
+    }while (i>0);
+    print_map(a,N);*/
+
+    return 0;
 }
 void print_map(char *array,int N)
 {
-    for(int i=0;i<2*N;i++)
-    {
-        for(int j=0;j<2*N;j++)
-        {
-            printf("%c ",*(array+i)+j));
-        }
-        printf("\n");
-    }
+	if(N!=1)
+	{
+		for(int i=0;i<4*N*N;i++)
+		{
+			if(i>=N&&(i+1)%(2*N)==1)
+			{
+				printf("\n");
+				printf("%c",*(array+i));
+			}
+			else if(i>=N&&(i+1)%(2*N)==0)
+			{
+				printf("%c",*(array+i));
+			}
+			else
+			{
+				printf("%c ",*(array+i));
+			}
+		}
+	}
+	else
+	{
+		printf("%c ",*(array));
+		printf("%c\n",*(array+1));
+		printf("%c ",*(array+2));
+		printf("%c",*(array+3));
+	}
 }

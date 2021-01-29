@@ -1,19 +1,44 @@
 #include<stdio.h>
-main()
+#include<string.h>
+#include<stdlib.h>
+
+void print_map(char *array,int N);
+int main()
 {
-	long int a , b , c ,d;
-	printf("输入一个三位十进制整数:");
-	scanf_s("%ld",&a);
-	if (a < 0)
+	char *a=NULL;
+	a=(char*)calloc(4,sizeof(char));
+	*a='a';
+	*(a+1)='b';
+	*(a+2)='c';
+	*(a+3)='d';
+	print_map(a,1);
+}
+void print_map(char *array,int N)
+{
+	if(N!=1)
 	{
-		a = -a;
+		for(int i=0;i<4*N*N;i++)
+		{
+			if(i>=N&&(i+1)%(2*N)==1)
+			{
+				printf("\n");
+				printf("%c",*(array+i));
+			}
+			else if(i>=N&&(i+1)%(2*N)==0)
+			{
+				printf("%c",*(array+i));
+			}
+			else
+			{
+				printf("%c ",*(array+i));
+			}
+		}
 	}
 	else
 	{
-		a = a;
+		printf("%c ",*(array));
+		printf("%c\n",*(array+1));
+		printf("%c ",*(array+2));
+		printf("%c",*(array+3));
 	}
-	b = a % 10;
-	c = ((a - b) / 10) % 10;
-	d = (a - b - (10 * c)) / 100;
-	printf("它的逆序数为：%ld", 100 * b + 10 * c + d);
 }
