@@ -93,77 +93,104 @@ Uh-oh
 Uh-oh
 Game Over
 */
-#include<stdio.h>
-#include<stdlib.h>
-#include<time.h>
-#include<string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
 
-void print_map(char *array,int N);
+void print_map(char *array, int N);
 int main()
 {
-    int N,count=0,i;
-    char *a=NULL,temp;
-    int m,n;
-    scanf("%d",&N);
-    if(a=(char*)malloc(4*N*N*sizeof(char))==NULL)
-    {
-        printf("error!");
-        return 0;
-    }
-    a=(char*)memset(&a,' ',4*N*N*sizeof(char));
-    i=N*N*2;
+    int N;
+    int count = 0, i, j,m, n, t,l;
+    char temp;
+    int times;
+    scanf("%d", &N);
+    t = 4 * N * N;
+    char *a = calloc(t, sizeof(char));//
+    i = t / 2;
+    l=i;
     srand((unsigned)time(NULL));
-    printf("%c",*(a+2));
-    /*do
+    do
     {
-        printf("%d\n",i);
-        m=rand()%(N*N*4);
-        printf("%d\n",m);
-        n=rand()%(N*N*4);
-        temp=rand()%26+65;
-        printf("%d,%d,%c",m,n,temp);
-        if(*(a+m)==0&&*(a+n)==0&&m!=n)
+        printf("%d\n", i);
+        m = rand() % t;
+        n = rand() % t;
+        temp = rand() % 26 + 65;
+        if (*(a + m) == 0 && *(a + n) == 0 && m != n)
         {
-            *(a+m)=temp;
-            *(a+n)=temp;
+            *(a + m) = temp;
+            *(a + n) = temp;
         }
         else
         {
             continue;
         }
-        i-=1;
-        printf("%d %d\n",m,n);
-    }while (i>0);
-    print_map(a,N);*/
+        i -= 1;
+        printf("%d %d\n", m, n);
+    } while (i > 0);
+    print_map(a, N);
+    scanf("%d", &times);
+    int *b = calloc(times * 4, sizeof(int));
+    do
+    {
+        scanf("%d %d %d %d", b + j, b + j + 1, b + j + 2, b + j + 3);
+        count++;
+        j += 4;
+    } while (count <= times);
 
+    for(int j=0;times==0;)
+    {
+        if(*(a+ (*(b+j))*(*(b+j+1)))==*(a+ (*(b+j+2))*(*(b+j+3)))&&(*(a+ (*(b+j))*(*(b+j+1))))>='A'&&(*(a+ (*(b+j))*(*(b+j+1))))<='Z'&&(*(a+ (*(b+j+2))*(*(b+j+3))))<='Z'&&(*(a+ (*(b+j+2))*(*(b+j+3))))>='A')
+        {
+            *(a+ (*(b+j))*(*(b+j+1)))='*';
+            *(a+ (*(b+j+2))*(*(b+j+3)))='*';
+            l--;
+            print_map(a,N);
+        }
+        else
+        {
+            printf("Uh-oh");
+        }
+        times--;
+    }
+    if(l==0)
+    {
+        printf("Congratulations!");
+    }
+    else
+    {
+        printf("Game Over");
+    }
+    free(a);
     return 0;
 }
-void print_map(char *array,int N)
+void print_map(char *array, int N)
 {
-	if(N!=1)
-	{
-		for(int i=0;i<4*N*N;i++)
-		{
-			if(i>=N&&(i+1)%(2*N)==1)
-			{
-				printf("\n");
-				printf("%c",*(array+i));
-			}
-			else if(i>=N&&(i+1)%(2*N)==0)
-			{
-				printf("%c",*(array+i));
-			}
-			else
-			{
-				printf("%c ",*(array+i));
-			}
-		}
-	}
-	else
-	{
-		printf("%c ",*(array));
-		printf("%c\n",*(array+1));
-		printf("%c ",*(array+2));
-		printf("%c",*(array+3));
-	}
+    if (N != 1)
+    {
+        for (int i = 0; i < 4 * N * N; i++)
+        {
+            if (i >= N && (i + 1) % (2 * N) == 1)
+            {
+                printf("\n");
+                printf("%c ", *(array + i));
+            }
+            else if (i >= N && (i + 1) % (2 * N) == 0)
+            {
+                printf("%c", *(array + i));
+            }
+            else
+            {
+                printf("%c ", *(array + i));
+            }
+        }
+    }
+    else
+    {
+        printf("%c ", *(array));
+        printf("%c\n", *(array + 1));
+        printf("%c ", *(array + 2));
+        printf("%c", *(array + 3));
+    }
 }

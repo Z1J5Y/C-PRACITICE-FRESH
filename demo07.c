@@ -1,37 +1,15 @@
-//实验题
 #include<stdio.h>
-main()
+#include<string.h>
+#include<stdlib.h>
+int main()
 {
-	float s;
-	int a;
-	printf("输入工资:");
-	scanf_s("%f", &s);
-	if (s < 500) 
-	a = 1;
-	else if (1000 > s) 
-	a = 2;
-	else if (2000 > s)
-	a = 3;
-	else if (3000 > s)
-	a = 4;
-	else
-	a = 5;
-	switch (a)
+	char *a=NULL;
+	a=malloc(10*sizeof(char));
+	memset(a,0,10*sizeof(char));
+	for(int i=0;i<10;i++)
 	{
-	case 1:
-		printf("工资:%f", s);
-		break;
-	case 2:
-		printf("工资:%f", s - s * 0.05);
-		break;
-	case 3:
-		printf("工资:%f", s - s * 0.08);
-		break;
-	case 4:
-		printf("工资:%f", s - s * 0.1);
-		break;
-	case 5:
-		printf("工资:%f", s - s * 0.15);
-		break;
+		printf("%d ",*(a+1));
 	}
+	free(a);
+	return 0;
 }
