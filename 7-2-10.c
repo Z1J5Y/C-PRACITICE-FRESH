@@ -102,7 +102,7 @@ void print_map(char *array, int N);
 int main()
 {
     int N;
-    int count = 0, i, j,m, n, t,l;
+    int count = 0, i, j=0,m, n, t,l;
     char temp;
     int times;
     scanf("%d", &N);
@@ -113,7 +113,6 @@ int main()
     srand((unsigned)time(NULL));
     do
     {
-        printf("%d\n", i);
         m = rand() % t;
         n = rand() % t;
         temp = rand() % 26 + 65;
@@ -127,7 +126,6 @@ int main()
             continue;
         }
         i -= 1;
-        printf("%d %d\n", m, n);
     } while (i > 0);
     print_map(a, N);
     scanf("%d", &times);
@@ -137,14 +135,18 @@ int main()
         scanf("%d %d %d %d", b + j, b + j + 1, b + j + 2, b + j + 3);
         count++;
         j += 4;
-    } while (count <= times);
+    } while (count < times);
 
-    for(int j=0;times==0;)
+    for(int j=0;times==0;times--)
     {
-        if(*(a+ (*(b+j))*(*(b+j+1)))==*(a+ (*(b+j+2))*(*(b+j+3)))&&(*(a+ (*(b+j))*(*(b+j+1))))>='A'&&(*(a+ (*(b+j))*(*(b+j+1))))<='Z'&&(*(a+ (*(b+j+2))*(*(b+j+3))))<='Z'&&(*(a+ (*(b+j+2))*(*(b+j+3))))>='A')
+        if((*(a+ (*(b+j)-1)*2*N+(*(b+j+1)-1)))==(*(a+ (*(b+j+2)-1)*2*N+(*(b+j+3)-1)))&&
+        (*(a+ (*(b+j)-1)*2*N+(*(b+j+1)-1)))>='A'&&
+        (*(a+ (*(b+j)-1)*2*N+(*(b+j+1)-1)))<='Z'&&
+        (*(a+ (*(b+j+2)-1)*2*N+(*(b+j+3)-1)))<='Z'&&
+        (*(a+ (*(b+j+2)-1)*2*N+(*(b+j+3)-1)))>='A')
         {
-            *(a+ (*(b+j))*(*(b+j+1)))='*';
-            *(a+ (*(b+j+2))*(*(b+j+3)))='*';
+            *(a+ (*(b+j)-1)*2*N+(*(b+j+1)-1))='*';
+            *(a+ (*(b+j+2)-1)*2*N+(*(b+j+3)-1))='*';
             l--;
             print_map(a,N);
         }
@@ -152,8 +154,8 @@ int main()
         {
             printf("Uh-oh");
         }
-        times--;
     }
+    printf("%d",l);
     if(l==0)
     {
         printf("Congratulations!");
@@ -193,4 +195,5 @@ void print_map(char *array, int N)
         printf("%c ", *(array + 2));
         printf("%c", *(array + 3));
     }
+    putchar('\n');
 }
