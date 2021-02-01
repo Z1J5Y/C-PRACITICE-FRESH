@@ -1,16 +1,10 @@
-//大于一整数的最小素数
 #include<stdio.h>
-main()
+#include<stdlib.h>
+
+int main()
 {
-	int input, output, i, j = 0;
-	printf("输入正整数:");
-	scanf_s("%d", &input);
-	for (output = input + 1; !j; output++)
-	{
-		for (i = 2; i < output; i++)
-		{
-			j = output % i;
-		}
-	}
-	printf("大于该正整数的最小素数为:%d", output);
+	int j=0,*b=calloc(4,sizeof(int));
+    scanf("%d %d %d %d", b + j, b + j + 1, b + j + 2, b + j + 3);
+	printf("%d %d %d %d",*(b + j), *(b + j + 1), *(b + j + 2), *(b + j + 3));
+	return 0;
 }

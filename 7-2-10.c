@@ -97,19 +97,18 @@ Game Over
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-
 void print_map(char *array, int N);
 int main()
 {
     int N;
-    int count = 0, i, j=0,m, n, t,l;
+    int count = 0, i, j = 0, m, n, t, l;
     char temp;
     int times;
     scanf("%d", &N);
     t = 4 * N * N;
-    char *a = calloc(t, sizeof(char));//
+    char *a = calloc(t, sizeof(char));
     i = t / 2;
-    l=i;
+    l = i;
     srand((unsigned)time(NULL));
     do
     {
@@ -136,27 +135,29 @@ int main()
         count++;
         j += 4;
     } while (count < times);
-
-    for(int j=0;times==0;times--)
+    printf("%c %c", (*(a + (*(b + 0) - 1) * 2 * N + (*(b + 0 + 1) - 1))), (*(a + (*(b + 0 + 2) - 1) * 2 * N + (*(b + 0 + 3) - 1))));
+    do
     {
-        if((*(a+ (*(b+j)-1)*2*N+(*(b+j+1)-1)))==(*(a+ (*(b+j+2)-1)*2*N+(*(b+j+3)-1)))&&
-        (*(a+ (*(b+j)-1)*2*N+(*(b+j+1)-1)))>='A'&&
-        (*(a+ (*(b+j)-1)*2*N+(*(b+j+1)-1)))<='Z'&&
-        (*(a+ (*(b+j+2)-1)*2*N+(*(b+j+3)-1)))<='Z'&&
-        (*(a+ (*(b+j+2)-1)*2*N+(*(b+j+3)-1)))>='A')
+        if ((*(a + (*(b + j - 4) - 1) * 2 * N + (*(b + j - 4 + 1) - 1))) == 
+            (*(a + (*(b + j - 4 + 2) - 1) * 2 * N + (*(b + j - 4 + 3) - 1))) &&
+            (*(a + (*(b + j - 4) - 1) * 2 * N + (*(b + j - 4 + 1) - 1))) >= 'A' &&
+            (*(a + (*(b + j - 4) - 1) * 2 * N + (*(b + j - 4 + 1) - 1))) <= 'Z' &&
+            (*(a + (*(b + j - 4 + 2) - 1) * 2 * N + (*(b + j - 4 + 3) - 1))) <= 'Z' &&
+            (*(a + (*(b + j - 4 + 2) - 1) * 2 * N + (*(b + j - 4 + 3) - 1))) >= 'A')
         {
-            *(a+ (*(b+j)-1)*2*N+(*(b+j+1)-1))='*';
-            *(a+ (*(b+j+2)-1)*2*N+(*(b+j+3)-1))='*';
+            *(a + (*(b + j - 4) - 1) * 2 * N + (*(b + j - 4 + 1) - 1)) = '*';
+            *(a + (*(b + j - 4 + 2) - 1) * 2 * N + (*(b + j - 4 + 3) - 1)) = '*';
             l--;
-            print_map(a,N);
+            print_map(a, N);
         }
         else
         {
-            printf("Uh-oh");
+            printf("Uh-oh\n");
         }
-    }
-    printf("%d",l);
-    if(l==0)
+        j -= 4;
+        times--;
+    } while (times != 0);
+    if (l == 0)
     {
         printf("Congratulations!");
     }
