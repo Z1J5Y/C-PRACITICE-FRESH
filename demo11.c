@@ -1,6 +1,6 @@
 #include<stdio.h>
 void reserve_num(float array[], int n);
-main()
+int main()
 {
 	int i=-1;
 	float a[10];
@@ -10,6 +10,7 @@ main()
 		scanf_s("%f",&a[i]);
 	} while (a[i] >= 0);
 	reserve_num(a, i);
+	return 0;
 }
 void reserve_num(float array[], int n)
 {

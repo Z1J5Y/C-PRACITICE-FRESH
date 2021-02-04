@@ -1,39 +1,23 @@
 #include<stdio.h>
-#include<math.h>
-main()
+#include<string.h>
+#include<stdlib.h>
+
+struct Book
 {
-	float i, j;
-	for (i = 13; i <= 84; i++)
-	{
-		j = 168 / i;
-		if (j - (int)j == 0)
-		{
-			if (!((i + j) / 2 - (int)(i + j) / 2))
-			{
-				if (!(pow((j + i) / 2, 1 / 2) - (int)pow((j + i) / 2, 1 / 2)))
-				{
-					if (!(pow((i - j) / 2, 1 / 2) - (int)pow((i - j) / 2, 1 / 2)))
-					{
-						printf("¸ÃÊýÎª:%f,%f,%f\n", pow((j + i) / 2, 2) - 268, i, j);
-					}
-					else
-					{
-						continue;
-					}
-				}
-				else
-				{
-					continue;
-				}
-			}
-			else
-			{
-				continue;
-			}
-		}
-		else
-		{
-			continue;
-		}
-	}
+	char authur[20];
+	char title[25];
+	int num;
+};
+
+int main()
+{
+	struct Book *b[10];
+
+	b[0]=calloc(1,sizeof(struct Book));
+	strcpy(b[0]->authur,"qiu ruoyu");
+	strcpy(b[0]->title,"Cyuyan lian xi");
+	b[0]->num=1;
+	printf("%s,%s,%d",b[0]->authur,b[0]->title,b[0]->num);
+
+	return 0;
 }

@@ -1,91 +1,26 @@
-//判断日期为一年中的天数
 #include<stdio.h>
-main()
+#include<stdlib.h>
+#include<string.h>
+typedef struct Node
 {
-	int month, day, year, count = 0, sum;
-	printf("输入日期(如:2017.1.1)");
-	scanf_s("%d.%d.%d", &year, &month, &day);
-	switch (month)
-	{
-	case 1:
-	{
-		count = 0;
-		break;
-	}
-	case 2:
-	{
-		count = 31;
-		break;
-	}
-	case 3:
-	{
-		count = 31 + 28;
-		break;
-	}
-	case 4:
-	{
-		count = 31 + 28 + 31;
-		break;
-	}
-	case 5:
-	{
-		count = 31 + 28 + 31 + 30;
-		break;
-	}
-	case 6:
-	{
-		count = 31 + 28 + 31 + 30 + 31;
-		break;
-	}
-	case 7:
-	{
-		count = 31 + 28 + 31 + 30 + 31 + 30;
-		break;
-	}
-	case 8:
-	{
-		count = 31 + 28 + 31 + 30 + 31 + 30 + 31;
-		break;
-	}
-	case 9:
-	{
-		count = 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31;
-		break;
-	}
-	case 10:
-	{
-		count = 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30;
-		break;
-	}
-	case 11:
-	{
-		count = 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31;
-		break;
-	}
-	case 12:
-	{
-		count = 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30;
-		break;
-	}
-	default:
-		printf("输入错误");
-		return 0;
-	}
-	if ((year % 4 != 0) || !(year % 100))
-	{
-		sum = count + day;
-	}
-	else
-	{
-		if (count > 31 + 28)
-		{
-			sum = count + day + 1;
-
-		}
-		else
-		{
-			sum = count + day;
-		}
-	}
-	printf("这天是这一年的第%d天", sum);
-}
+    int a;
+    struct Node *b;
+}node;
+int main()
+{
+    int count=0;
+	node *a1=calloc(1,sizeof(node)),*a2=calloc(1,sizeof(node)),*a3=calloc(1,sizeof(node)),*a4=calloc(1,sizeof(node));
+    a1->a=1;
+    a2->a=2;
+    a3->a=3;
+    a4->a=4;
+    a1->b=a2;
+    a2->b=a3;
+    a3->b=a4;
+    a4->b=NULL;
+    for(node *ptr=a1;ptr!=NULL;count++)
+    {
+        ptr=ptr->b;
+    }
+    printf("%d",count);
+    }
