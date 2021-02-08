@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 #define N 20
-main()
+int main()
 {
 	char a[N] = { "0" }, b[N] = { "0" }, result[N] = { "0" }, temp[N];
 	int an, bn, extra = 0, max, way, i, j;
@@ -168,6 +168,6 @@ main()
 		{
 			printf("the result : -%s\n", result);
 		}
-
 	}
+	return 0;
 }

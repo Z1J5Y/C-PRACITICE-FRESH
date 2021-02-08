@@ -1,16 +1,22 @@
-//递归求阶乘(无限制 不完善)
 #include <stdio.h>
-void F(int n, int m);
+#include<stdlib.h>
+#include<string.h>
+struct friends
+{
+	char name[20];
+	long num;
+	struct friends *next;
+};
+typedef struct friends Friends;
+
 int main()
 {
-    long long n = 1, m = 1;
-    F(n, m);
-}
-void F(long long n, long long m)
-{
-    printf("%lld\n", n + m);
-    if (n < m)
-        F(n + m, m);
-    else
-        F(n + m, n);
+    Friends a;
+    Friends *pa1;
+    strcpy(a.name,"q\0");
+    a.num=1;
+    a.next=&a;
+    pa1=&a;
+    printf("%d %s %d %s",pa1->num,pa1->name,a.next->num,a.next->name);
+    return 0;
 }
