@@ -10,7 +10,7 @@ struct date
 };
 typedef struct date Date;
 
-void Queue(Date *);
+Date *Queue(Date *);
 
 int main()
 {
