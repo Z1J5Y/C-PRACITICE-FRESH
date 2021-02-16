@@ -14,5 +14,5 @@ main()
 		sum += pow(-1, (count + 1))*j;
 	}
 	Pi = 4 * sum;
-	printf("¦°¡Ö%lf,ÀÛ¼ÓÁË%d´Î", Pi,count);
+	printf("Pi=%lf,count=%d", Pi,count);
 }

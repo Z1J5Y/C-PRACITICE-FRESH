@@ -1,18 +1,52 @@
-//累加求Π
 #include<stdio.h>
-#include<math.h>
-main()
+#include<stdlib.h>
+
+struct date
 {
-	float i, j = 1;
-	int count=0;
-	double sum=0, Pi;
-	for (i = 1; i < 1e4;)
-	{
-		j = 1 / i;
-		i += 2;
-		count += 1;
-		sum += pow(-1, (count + 1))*j;
-	}
-	Pi = 4 * sum;
-	printf("¦°¡Ö%lf,ÀÛ¼ÓÁË%d´Î", Pi,count);
+    int year;
+    int month;
+    int day;
+    struct date *next;
+};
+typedef struct date Date;
+
+void Queue(Date *);
+
+int main()
+{
+    Date *head=calloc(1,sizeof(Date));
+    for(int i=0;i<10;i++)
+    {
+        Date *temp=calloc(1,sizeof(Date));
+        temp->year=2000;
+        temp->day=i;
+        temp->month=i*7%6+1;
+        temp->next=head->next;
+        head->next=temp;
+    }
+    Queue(head);
+    for(Date *temp=head->next;temp!=NULL;temp=temp->next)
+    {
+        printf("%d %d %d\n",temp->year,temp->month,temp->day);
+    }
+    return 0;
+}
+Date *Queue(Date *head)
+{
+    Date *pCure=NULL,*temp,*current;
+    for(;head->next!=pCure;pCure=current->next)
+    {
+        current=head;
+        for(;current->next->next!=pCure;current=current->next)
+        {
+            if(current->next->month>current->next->next->month)
+            {
+                temp=current->next->next->next;
+                current->next->next->next=current->next;
+                current->next=current->next->next;
+                current->next->next->next=temp;
+            }
+        }
+    }
+    return head;
 }
