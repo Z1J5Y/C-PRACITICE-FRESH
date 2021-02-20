@@ -7,7 +7,7 @@ int main()
 	do
 	{
 		i++;
-		scanf_s("%f",&a[i]);
+		scanf("%f",&a[i]);
 	} while (a[i] >= 0);
 	reserve_num(a, i);
 	return 0;
