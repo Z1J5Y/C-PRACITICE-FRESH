@@ -77,7 +77,7 @@ Score *LinkLinkedList(Score *head1,Score *head2)
     Score *medium=head1;
     for(;head1->p!=NULL;head1=head1->p);
     head1->p=head2->p;
-    return medium;
+    return head1;
 }
 Score *QueueLinkedList(Score *head)
 {
