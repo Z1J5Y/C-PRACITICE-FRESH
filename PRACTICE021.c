@@ -9,18 +9,20 @@ typedef struct
 }SqList;
 
 SqList InitSqList(SqList);
-SqList InsertElem(SqList,int,int);
-SqList DeleteElem(SqList,int,int);
+void InsertElem(SqList *,int,int);
+void DeleteElem(SqList *,int,int *);
 
 int main()
 {
     SqList a;
+    a=InitSqList(a);
 }
-void InitSqList(SqList *a)
+SqList InitSqList(SqList a)
 {
-    scanf("%d",&a->length);
+    scanf("%d",&a.length);
     a.listsize=a.length*sizeof(int);
     a.elem=(int *)calloc(1,a.listsize);
+    return a;
 }
 void InsertElem(SqList *a,int i,int e)
 {
@@ -31,7 +33,7 @@ void InsertElem(SqList *a,int i,int e)
     }
     a->length+=1;
     a->listsize=a->length*sizeof(int);
-    a->elem=realloc(a->elem,a->listsize);
+    a->elem=(int *)realloc(a->elem,a->listsize);
     for(int j=a->length-1;j>i-1;j--)
     {
         *(a->elem+j)=*(a->elem+j-1);
@@ -45,12 +47,13 @@ void DeleteElem(SqList *a,int i,int *e)
         printf("error");
         exit(1);
     }
+    *e=*(a->elem+i-1);
     a->length-=1;
     a->listsize=a->length*sizeof(int);
-    int *temp=calloc(1,sizeof(a->listsize));
+    int *temp=(int *)calloc(1,sizeof(a->listsize));
     for(int j=0;j<=a->length;j++)
     {
-        if(j>=i) *(temp+j)=*(a->elem+j);
+        if(j<i-1) *(temp+j)=*(a->elem+j);
         else *(temp+j)=*(a->elem+j+i);
     }
     free(a->elem);
