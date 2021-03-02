@@ -15,7 +15,22 @@ void DeleteElem(SqList *,int,int *);
 int main()
 {
     SqList a;
+    int temp,location,value,*delete=NULL;
     a=InitSqList(a);
+    for(int i=0;i<a.length;i++)
+    {
+        scanf("%d",&temp);
+        *(a.elem+i)=temp;
+    }
+    scanf("%d %d",&location,&value);
+    InsertElem(&a,location,value);
+    scanf("%d",&location);
+    DeleteElem(&a,location,delete);
+    for(int i=0;i<a.length;i++)
+    {
+        printf("%d ",*(a.elem+i));
+    }
+    return 0;
 }
 SqList InitSqList(SqList a)
 {
