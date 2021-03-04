@@ -24,7 +24,7 @@ int main()
         temp->next=head->next;
         head->next=temp;
     }
-    Queue(head);
+    head=Queue(head);
     for(Date *temp=head->next;temp!=NULL;temp=temp->next)
     {
         printf("%d %d %d\n",temp->year,temp->month,temp->day);
