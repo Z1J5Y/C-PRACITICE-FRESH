@@ -53,7 +53,6 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2)
     {
         temp=(struct ListNode *)calloc(1,sizeof(struct ListNode));
         temp->val=lc%10;
-        
         L->next=temp;
         L=temp;
         lc/=10;

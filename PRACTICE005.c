@@ -25,7 +25,7 @@ Friends *InputData(Friends *head)
 {
 	head=(Friends *)calloc(1,sizeof(Friends));
 	Friends *t=head;
-	for(;;)
+	while(1)
 	{
 		Friends *element=(Friends *)calloc(1,sizeof(Friends));
 		printf("Input the num:\n");
